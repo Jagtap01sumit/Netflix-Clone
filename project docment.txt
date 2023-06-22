@@ -1,0 +1,14 @@
+1. create react-app
+2. npm install -g yarn
+3. yarn add axios firebase styled-components react-icons react-redux @reduxjs/toolkit react-router-dom
+4. To start project use command "yarn start"
+
+5. make directory
+   component
+   pages 
+   store 
+   assets 
+
+6. make a Route Setup using {BrowserRouter, Route, Routes}
+
+7. go to google.firebase.com
