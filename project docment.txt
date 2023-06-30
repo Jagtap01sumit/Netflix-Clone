@@ -1,6 +1,8 @@
+# means Reference......................................................
+
 1. create react-app
 2. npm install -g yarn
-3. yarn add axios firebase styled-components react-icons react-redux @reduxjs/toolkit react-router-dom
+3. yarn add axios firebase #styled-components# react-icons react-redux @reduxjs/toolkit react-router-dom
 4. To start project use command "yarn start"
 
 5. make directory
@@ -12,3 +14,27 @@
 6. make a Route Setup using {BrowserRouter, Route, Routes}
 
 7. go to google.firebase.com
+   create a new project allow all 
+   copy code 
+   create firebase-dofig.js file and paste the code in it 
+
+
+# styled-component : Styled-components is a library that allows you to write CSS in JS while building custom components in Reactjs .
+
+
+8. first we create there js files in pages Folder 
+   1. Login.jsx 
+       
+   2. Netflix.jsx 
+   2. Signup.jsx 
+
+9. password and get start button switching in signup pages
+   
+   1.create useState
+   const [showPassword,setShowPassword]=useState(false)
+   2.if showPassword is false then input placeholder is password else its get Started 
+   {showPassword && <input type="password" placeholder='password' name='password' />}
+   {!showPassword && <button onClick={() => setShowPassword(true)}>Get Started</button>}
+   3.In CSS if showPassword is true then 1fr 1fr else 2fr 1fr
+    display:grid;
+    grid-template-columns: ${({ showPassword }) => showPassword ? "1fr 1fr" : "2fr 1fr"};

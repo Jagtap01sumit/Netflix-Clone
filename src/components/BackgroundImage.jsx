@@ -3,9 +3,19 @@ import background from "../assets/login.jpg"
 import styled from "styled-components"
 export default function BackgroundImage() {
   return (
-<container>
-    <img src={background} alt="" />
-</container>
-  )
+<Container>
+    <img src={background} alt="background" />
+</Container>
+  );
 }
-const Container = styled.div``;
+const Container = styled.div`
+height :100vh;
+width :100vw;
+img{
+  height :100vh;
+  width :100vw;
+}
+
+`
+
+;
