@@ -38,3 +38,45 @@
    3.In CSS if showPassword is true then 1fr 1fr else 2fr 1fr
     display:grid;
     grid-template-columns: ${({ showPassword }) => showPassword ? "1fr 1fr" : "2fr 1fr"};
+
+8. print input at console 
+   const [formValues,setFormValues] = useState({email:"",password:""});
+
+    <input type="email" placeholder='email address' name='email' value={formValues.email} onChange={(e)=>setFormValues({...formValues,[e.target.name]:e.target.value})} />
+
+   <button onClick={handleSignIn}>signup</button>
+   const handleSignIn=async()=>{
+    console.log(formValues);
+  }
+   *****************chatgpt******************
+    value={formValues.email}: Binds the value of the input field to the email property of the formValues object. formValues is likely a state variable from the component's state.
+
+    onChange={(e) => setFormValues({...formValues, [e.target.name]: e.target.value})}: Specifies an event handler for the onChange event of the input field. When the input value changes, this handler function is called. It updates the formValues state by creating a new object using the spread operator ({...formValues}) to clone the existing formValues object, and then it updates the value of the property corresponding to the input's name using computed property names ([e.target.name]) and assigns it the new value of the input (e.target.value).
+
+    The purpose of this code is to create an email input field in a form and synchronize its value with the formValues state object. When the user enters or modifies their email address in the input field, the formValues.email property is updated accordingly, allowing the component to capture and use the updated value.
+
+9. after login how to navigate pages
+
+   onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (currentUser) navigate("/");
+    })
+
+   It sets up a listener using the onAuthStateChanged function provided by Firebase Authentication.
+
+   Whenever there is a change in the authentication state (e.g., when a user logs in or logs out), the code inside the listener will be executed.
+
+   Inside the listener, there is a check to see if there is a currently logged-in user (currentUser).
+
+   If there is a logged-in user (meaning currentUser is not null or undefined), it will navigate the user to the root path ("/") of the application.
+
+   In simpler terms, the code makes sure to redirect the user to the main page of the application whenever they log in or when their authentication status changes.
+
+10. Logout from the home page
+    const navigate = useNavigate();
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (!currentUser) navigate("/login");
+    })
+
+   <button onClick={() =>{ signOut(firebaseAuth)}}>
+      <FaPowerOff />
+   </button>

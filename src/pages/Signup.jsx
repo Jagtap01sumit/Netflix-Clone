@@ -2,12 +2,24 @@ import React from 'react'
 import { useState } from 'react';
 import styled from "styled-components";
 import BackgroundImage from "../components/BackgroundImage";
+import {  firebaseAuth } from '../utils/firebase-config';
 import Header from "../components/Header";
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 export default function Signup() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false)
   const [formValues,setFormValues] = useState({email:"",password:""});
   const handleSignIn=async()=>{
-    console.log(formValues);
+  try{
+    const {email,password} =formValues;
+    await createUserWithEmailAndPassword( firebaseAuth,email,password);
+  }catch(err){
+    console.log(err);
+  };
+  onAuthStateChanged(firebaseAuth,(currentUser)=>{
+    if(currentUser) navigate("/");
+  })
   }
   return (
     <Container showPassword={showPassword}>
@@ -82,7 +94,7 @@ position:relative;
         padding:0.5rem 1rem;
         background-color:#e50914;
         border:none;
-        corsor:pointer ;
+       cursor:pointer;
         color:white;
        
         font-weight:bold;
@@ -94,7 +106,7 @@ position:relative;
       padding:0.5rem 1rem;
       background-color:#e50914;
       border:none;
-      corsor:pointer ;
+      cursor:pointer ;
       color:white;
       border-radius:0.2rem;
       font-weight:bold;

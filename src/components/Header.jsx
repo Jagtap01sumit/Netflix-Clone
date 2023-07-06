@@ -15,7 +15,7 @@ export default function Header(props) {
   )
 }
 const Container = styled.div`
-padding: 0rem 4rem;
+padding: 0rem 4rem;  
 .logo{
   img{
     height:5rem;
